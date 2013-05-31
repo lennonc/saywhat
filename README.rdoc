@@ -2,3 +2,4 @@
 
 - Type echo  "rvm use 1.9.3@SW --create" > .rvmrc into your shell
 - Run the bundle command
+- rails g rspec:install
