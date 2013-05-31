@@ -1,0 +1,21 @@
+<h3>Showing all quotes</h3>
+
+<table border="1">
+  <tr>
+    <!-- <th> -->
+      <th>Who?</th>
+      <th>Said What?</th>
+      <th>When?</th>
+    <!-- </th> -->
+  </tr>
+  <%@quotes.each do |quote|%>
+    <tr>
+      <td><%= quote.speaker%></td>
+      <td><%= quote.quote %></td>
+      <td><%= quote.date_of_quote %></td>
+    </tr>
+  <%end%>
+
+
+</table>
+
