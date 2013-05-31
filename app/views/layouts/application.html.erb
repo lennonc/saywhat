@@ -14,7 +14,26 @@
 </head>
 <body>
   
-  <%= yield %>
+  
 
+  <div class="container">
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <ul class="nav">
+          <li><a href="#">Home</a></li>
+
+          <div style="display:inline-block" class="pull-right">
+            <a class="btn btn-success"><b>+</b> New Quote</a>
+            <a class="btn btn-danger">Logout</a>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= yield %>  
+    </div>
+  </div>
 </body>
 </html>
