@@ -41,10 +41,14 @@
         </ul>
       </div>
     </div>
-
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash#{name}" %>
-    <% end %>
+    <%if flash.count != 0 %>
+    <div class="alert alert-block">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :span, msg, :id => "flash#{name}" %>
+      <% end %>
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+    </div>
+    <%end%>
 
     <div class="content">
       <%= yield %>  

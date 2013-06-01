@@ -18,3 +18,5 @@
 // $(function() {
 //   $("#quote_date_of_quote").datepicker();
 // });
+
+$(".alert").alert()

@@ -1,4 +1,6 @@
 class QuotesController < ApplicationController
+
+  before_filter :authorize
   def index
     @quotes = Quote.all
   end
