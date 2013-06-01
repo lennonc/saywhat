@@ -1,0 +1,29 @@
+<h3>Add new Quote</h3>
+
+<%= form_for @quote do |f| %>
+  <table>
+    <tr>
+      <td class="labels">
+        <%= f.label "Said what?"%>
+      </td>
+      <td>
+        <%= f.text_area :quote, :class => "quote-text-area"%>
+      </td>
+    </tr>
+    <tr>
+      <td class="labels">
+        <%= f.label "When?"%>
+      </td>
+      <td>
+        <%= f.date_select(:date_of_quote, :start_year => 2010)%>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="submit-button">
+        <%= f.submit "Save", :class => "btn btn-primary"%>
+      </td>
+    </tr>
+  </table>
+  
+<%end%>

@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   def index
-      @quotes = Quote.all
+    @quotes = Quote.all
   end
 
   def create
@@ -8,7 +8,7 @@ class QuotesController < ApplicationController
   end
 
   def new
-      
+    @quote = Quote.new
   end
 
   def destroy
