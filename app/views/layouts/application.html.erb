@@ -14,7 +14,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
+  
   <div class="container">
     <div class="navbar">
       <div class="navbar-inner">
@@ -23,12 +25,26 @@
             <%= link_to "See All Quotes", quotes_path%>
           </li>
           <div style="display:inline-block" class="pull-right">
-            <%= link_to "+ New Quote", new_quote_path, :class => "btn btn-success "%>
-            <a class="btn btn-danger">Logout</a>
+            
+            <% if current_user%>
+              <%= link_to "+ New Quote", new_quote_path,      :class => "btn btn-success "%>
+              <%= link_to "Log out", log_out_path, 
+                      :class => "btn btn-danger"%>
+            <%else%>
+              <%= link_to "Sign up", sign_up_path,
+                        :class => "btn btn-success" %> 
+              <%= link_to "Log in", log_in_path,
+                        :class => "btn btn-success"  %>
+              
+            <%end%>
           </div>
         </ul>
       </div>
     </div>
+
+    <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash#{name}" %>
+    <% end %>
 
     <div class="content">
       <%= yield %>  

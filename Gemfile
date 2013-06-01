@@ -45,7 +45,7 @@ group :test do
 end
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', :require => "bcrypt"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
