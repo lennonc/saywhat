@@ -12,15 +12,25 @@ quote_list = [
 ]
 
 user_list = [
-  ["Kyle", "Moore", "me@example.com"],
-  ["Lennon", "Chimbumu", "me@example.com"]
+  ["Kyle", "Moore", "kmmoore@stanford.edu", "password"],
+  ["Lennon", "Chimbumu", "me@example.com", "password"]
 
 ]
 
-user_list.each do |first_name, last_name, email|
-  User.create(first_name: first_name, last_name: last_name, email: email)
+speaker_list = [
+  "Kyle Moore",
+  "Ian Campbell"
+]
+
+user_list.each do |first_name, last_name, email, password|
+  User.create(first_name: first_name, last_name: last_name, email: email, password: password)
 end
 
+speaker_list.each do |name|
+  Speaker.create(:name => name)
+end
+
+
 quote_list.each do |user_id, quote, speaker, date_of_quote|
-    Quote.create(user_id: user_id, quote: quote, speaker: speaker, date_of_quote: date_of_quote)
+    Quote.create(user_id: user_id, quote: quote, speaker_id: speaker_list.index(speaker) + 1, date_of_quote: date_of_quote)
 end

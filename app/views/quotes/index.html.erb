@@ -8,7 +8,7 @@
   </tr>
   <%@quotes.each do |quote|%>
     <tr>
-      <td><%= quote.speaker%></td>
+      <td><%= quote.speaker.name%></td>
       <td><%= quote.quote %></td>
       <td><%= quote.date_of_quote %></td>
     </tr>
