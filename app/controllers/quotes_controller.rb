@@ -6,7 +6,8 @@ class QuotesController < ApplicationController
   end
 
   def create
-      
+      q = Quote.create(params[:quote])
+      puts q
   end
 
   def new
