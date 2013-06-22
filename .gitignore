@@ -16,3 +16,5 @@
 .rvmrc
 public/.DS_Store
 public/images/.DS_Store
+.DS_Store
+*/.DS_Store
