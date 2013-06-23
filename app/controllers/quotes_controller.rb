@@ -9,7 +9,7 @@ class QuotesController < ApplicationController
   end
 
   def index
-    @per_page = params[:per_page] ? params[:per_page].to_i : quotes_per_page_list.first
+    @per_page = params[:per_page].to_i > 0 ? params[:per_page].to_i : quotes_per_page_list.first
     Quote.per_page = @per_page
 
     if params[:speaker_id]

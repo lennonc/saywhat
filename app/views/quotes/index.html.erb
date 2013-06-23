@@ -29,7 +29,7 @@
         </div>
 
         <div class="quote-info">
-          <%= image_tag quote.speaker.photo_url, :width => '100', :height => '100', :class => 'quote-speaker-photo', :alt => quote.speaker.name %>
+          <%= speaker_image quote.speaker %>
           <%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %><br/>
           <%= quote.date_of_quote.to_formatted_s(:long) %>
         </div>
@@ -40,3 +40,12 @@
   <div class="pagination-container"><%= will_paginate @quotes %></div>
 
 <% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.quote-info').popover({
+      html: true,
+      trigger: 'hover'
+    });
+  });
+</script>
