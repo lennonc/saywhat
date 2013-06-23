@@ -27,14 +27,15 @@
           <div style="display:inline-block" class="pull-right">
             
             <% if current_user%>
-              <%= link_to "+ New Quote", new_quote_path,      :class => "btn btn-success "%>
+              <%= link_to "+ New Quote", new_quote_path,
+                          :class => "left-btn btn btn-success "%>
               <%= link_to "Log out", log_out_path, 
-                      :class => "btn btn-danger"%>
+                          :class => "btn btn-danger"%>
             <%else%>
               <%= link_to "Sign up", sign_up_path,
-                        :class => "btn btn-success" %> 
+                          :class => "left-btn btn btn-success" %> 
               <%= link_to "Log in", log_in_path,
-                        :class => "btn btn-success"  %>
+                          :class => "btn btn-success"  %>
               
             <%end%>
           </div>

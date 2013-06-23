@@ -1,23 +1,42 @@
-<h3>Showing all quotes</h3>
-
-<table class="table">
-  <tr>
-    <th>Who?</th>
-    <th>Said What?</th>
-    <th>When?</th>
-  </tr>
-  <% if @quotes.empty? %>
-  <tr>
-    <td colspan="3"><div align="center"><h4>No quotes were found!</h4></div></td>
-  </tr>
+<h3>
+  <% if @speaker %>
+    Showing quotes by <%= @speaker.name %>
+  <% elsif @user %>
+    Showing quotes submitted by <%= @user.full_name %>
+  <% else %>
+    Showing all quotes
   <% end %>
-  
-  <%@quotes.each do |quote|%>
-    <tr>
-      <td><%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %></td>
-      <td>&ldquo;<%= quote.quote %>&rdquo;</td>
-      <td><%= quote.date_of_quote.to_formatted_s(:long) %></td>
-    </tr>
-  <%end%>
-</table>
+</h3>
 
+<% if @quotes.empty? %>
+  <div align="center"><h4>No quotes were found!</h4></div></td>
+<% else %>
+
+  <div class="pagination-top">
+    Quotes per page: <div class="btn-group">
+      <% quotes_per_page_list.each do |num| %>
+        <%= link_to num.to_s, quotes_per_page_link(num), :class => "btn" + (@per_page.to_i == num ? ' btn-inverse' : '') %>
+      <% end %>
+      
+    </div>
+  </div>
+
+  <div class="quotes-container">
+    <%@quotes.each_with_index do |quote,index|%>
+      <div class="quote <%= (index % 2) == 0 ? 'left' : 'right' %>">
+        <div class="quote-bubble">
+          <div class="quote-text">&ldquo;<%= quote.quote %>&rdquo;</div>
+        </div>
+
+        <div class="quote-info">
+          <img class="quote-speaker-photo" src="/assets/kyle.jpg" width="100" height="100" alt="<%= quote.speaker.name %>" />
+          <%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %><br/>
+          <%= quote.date_of_quote.to_formatted_s(:long) %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="pagination-container"><%= will_paginate @quotes %></div>
+
+<% end %>

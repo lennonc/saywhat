@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -19,7 +18,6 @@ end
 group :production do
   gem "mysql2",                      "0.3.11"
 end
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -46,6 +44,9 @@ end
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', :require => "bcrypt"
+
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

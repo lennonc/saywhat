@@ -1,60 +1,62 @@
-<h3>Add new Quote</h3>
+<div class="rounded_box">
+  <h3>Add new Quote</h3>
 
-<% if not @quote.errors.full_messages.empty? %>
-  <div class="alert alert-block">
-    <a class="close" data-dismiss="alert" href="#">&times;</a>
-    <% @quote.errors.full_messages.each do |msg| %>
-      <%= content_tag :span, msg %><br/>
-    <% end %>
-  </div>
-<% end %>
+  <% if not @quote.errors.full_messages.empty? %>
+    <div class="alert alert-block">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <% @quote.errors.full_messages.each do |msg| %>
+        <%= content_tag :span, msg %><br/>
+      <% end %>
+    </div>
+  <% end %>
 
-<%= form_for @quote do |f| %>
-  <table>
-    <tr>
-      <%= f.fields_for @quote.speaker do |field| %>
+  <%= form_for @quote do |f| %>
+    <table>
+      <tr>
+        <%= f.fields_for @quote.speaker do |field| %>
+          <td class="labels">
+            <%= field.label :name, "Who?"%>
+          </td>
+          <td>
+            <%= field.text_field :name %>
+          </td>
+        <% end %>
+      </tr>
+      <tr>
         <td class="labels">
-          <%= field.label :name, "Who?"%>
+          <%= f.label :quote, "Said what?"%>
         </td>
         <td>
-          <%= field.text_field :name %>
+          <%= f.text_area :quote, :class => "quote-text-area"%>
         </td>
-      <% end %>
-    </tr>
-    <tr>
-      <td class="labels">
-        <%= f.label :quote, "Said what?"%>
-      </td>
-      <td>
-        <%= f.text_area :quote, :class => "quote-text-area"%>
-      </td>
-    </tr>
-    <tr>
-      <td class="labels">
-        <%= f.label :date_of_quote, "When?"%>
-      </td>
-      <td>
-        <%= f.date_select(:date_of_quote, :start_year => 2010)%>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td class="submit-button">
-        <%= f.submit "Save", :class => "btn btn-primary"%>
-      </td>
-    </tr>
-  </table>
+      </tr>
+      <tr>
+        <td class="labels">
+          <%= f.label :date_of_quote, "When?"%>
+        </td>
+        <td>
+          <%= f.date_select(:date_of_quote, :start_year => 2010)%>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="submit-button">
+          <%= f.submit "Save", :class => "btn btn-primary"%>
+        </td>
+      </tr>
+    </table>
 
-  <script type="text/javascript">
-    $(function() {
-      var availableTags = <%=Speaker.all(:select => :name).map{ |speaker| speaker[:name] }.to_json.html_safe %>;
+    <script type="text/javascript">
+      $(function() {
+        var availableTags = <%=Speaker.all(:select => :name).map{ |speaker| speaker[:name] }.to_json.html_safe %>;
 
-      $( "#quote_speaker" ).autocomplete({
-        source: availableTags,
-        delay : 100,
-        autoFocus : true
+        $( "#quote_speaker_name" ).autocomplete({
+          source: availableTags,
+          delay : 100,
+          autoFocus : true
+        });
       });
-    });
-  </script>
-  
-<%end%>
+    </script>
+    
+  <%end%>
+</div>

@@ -2,14 +2,26 @@ class QuotesController < ApplicationController
 
   before_filter :authorize
 
+  helper_method :quotes_per_page_list
+
+  def quotes_per_page_list
+    [10, 20, 50]
+  end
+
   def index
+    @per_page = params[:per_page] ? params[:per_page].to_i : quotes_per_page_list.first
+    Quote.per_page = @per_page
+
     if params[:speaker_id]
-      @quotes = Quote.where(:speaker_id => params[:speaker_id].to_i).all
+      @speaker = Speaker.find_by_id(params[:speaker_id].to_i)
+      @quotes = Quote.where(:speaker_id => @speaker.id).paginate(:page => params[:page])
     elsif params[:user_id]
-      @quotes = Quote.where(:user_id => params[:user_id].to_i).all
+      @user = User.find_by_id(params[:user_id].to_i)
+      @quotes = Quote.where(:user_id => @user.id).paginate(:page => params[:page])
     end
 
-    @quotes = Quote.all unless @quotes
+    @quotes = Quote.paginate(:page => params[:page]) unless @quotes
+
   end
 
   def create
@@ -18,8 +30,6 @@ class QuotesController < ApplicationController
     speaker_params = params[:quote][:speaker]
     speaker = Speaker.where(speaker_params).first
     speaker = Speaker.new(speaker_params) unless speaker
-
-    ap speaker
 
     quote_params.delete :speaker
 
@@ -31,7 +41,6 @@ class QuotesController < ApplicationController
       redirect_to root_path
     else
       @quote = quote
-      ap @quote.speaker
       render :new
     end
   end

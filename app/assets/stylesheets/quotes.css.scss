@@ -1,17 +1,17 @@
-.quotes-table{
+.quotes-table {
   width: 100%
 }
 
-th{
+th {
   text-align: left;
 }
 
-.quote-text-area{
+.quote-text-area {
   height: 150px;
   width: 630px;
 }
 
-td.labels{
+td.labels {
   width: 100px
 }
 
@@ -19,6 +19,79 @@ td {
   vertical-align: top;
 }
 
-td.submit-button{
+td.submit-button {
   text-align: right;
+}
+
+.rounded_box {
+  padding: 20px;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+}
+
+.quote {
+  margin-bottom: 40px;
+}
+
+.quote.left {
+  text-align: left;
+}
+
+.quote.right {
+  text-align: right;
+}
+
+.quote.right .quote-bubble {
+  float: right;
+  margin-right: 50px;
+}
+
+.quote.left .quote-bubble {
+  float: left;
+  margin-left: 50px;
+}
+
+.quote.right .quote-speaker-photo {
+  float: right;
+  margin-left: 20px;
+}
+
+.quote.left .quote-speaker-photo {
+  float: left;
+  margin-right: 20px;
+}
+
+.quote-bubble {
+  background-color: rgb(220,243,255);
+  border-radius: 10px;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 20pt;
+  font-family: HelveticaNeue-UltraLight;
+  text-align: center;
+  width: 80%;
+}
+
+.quote-text {
+  padding: 40px;
+}
+
+.quote-info {
+  clear: both;
+}
+
+.quote-speaker-photo {
+  position: relative;
+  top: -30px;
+  border-radius: 100px;
+}
+
+.pagination-top {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.pagination-container {
+  text-align: center;
+  margin-top: 20px;
 }
