@@ -6,11 +6,17 @@
     <th>Said What?</th>
     <th>When?</th>
   </tr>
+  <% if @quotes.empty? %>
+  <tr>
+    <td colspan="3"><div align="center"><h4>No quotes were found!</h4></div></td>
+  </tr>
+  <% end %>
+  
   <%@quotes.each do |quote|%>
     <tr>
-      <td><%= quote.speaker.name%></td>
-      <td><%= quote.quote %></td>
-      <td><%= quote.date_of_quote %></td>
+      <td><%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %></td>
+      <td>&ldquo;<%= quote.quote %>&rdquo;</td>
+      <td><%= quote.date_of_quote.to_formatted_s(:long) %></td>
     </tr>
   <%end%>
 </table>

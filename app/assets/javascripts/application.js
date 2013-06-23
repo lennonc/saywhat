@@ -10,8 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
 
@@ -19,4 +17,9 @@
 //   $("#quote_date_of_quote").datepicker();
 // });
 
-$(".alert").alert()
+// Close the alert boxes when you click them
+$(function(){
+  $(".alert").click(function(){
+    $(this).alert('close')
+  });
+});
