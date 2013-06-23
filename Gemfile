@@ -14,9 +14,9 @@ group :development do
   gem 'binding_of_caller'
 end
 
-# use mysql in production
+# use postgresql in production
 group :production do
-  gem "mysql2",                      "0.3.11"
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -24,7 +24,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '2.2.6'
   gem 'bootstrap-datepicker-rails'
   # gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
 
@@ -54,7 +54,7 @@ gem 'koala'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

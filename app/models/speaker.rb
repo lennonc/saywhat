@@ -11,7 +11,7 @@ class Speaker < ActiveRecord::Base
 
   has_many :quotes
 
-  before_save :update_photo
+  # before_save :update_photo
 
   def name=(str)
     write_attribute(:name, str.to_s.titleize)
