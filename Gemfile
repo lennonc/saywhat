@@ -25,6 +25,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-datepicker-rails'
   # gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -47,6 +48,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
+gem 'koala'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

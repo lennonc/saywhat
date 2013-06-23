@@ -5,9 +5,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    ap params
     if @user.save
+
       redirect_to root_url, :notice => "Signed up!"
+      session[:user] = @user
     else
       render "new"
     end

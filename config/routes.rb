@@ -9,6 +9,8 @@ SayWhat::Application.routes.draw do
   get "/quotes/speaker/:speaker_id" => "quotes#index", :as => :speaker_quotes
   get "/quotes/user/:user_id" => "quotes#index", :as => :user_quotes
 
+  get "/speaker/:speaker_id/photo" => "speakers#photo", :as => :speaker_photo
+
   resources :users
   resources :sessions
   resources :quotes

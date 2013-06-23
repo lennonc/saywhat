@@ -12,6 +12,7 @@
 //
 //= require twitter/bootstrap
 //= require_tree .
+//= require bootstrap-datepicker
 
 // $(function() {
 //   $("#quote_date_of_quote").datepicker();

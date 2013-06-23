@@ -29,13 +29,18 @@ class QuotesController < ApplicationController
 
     speaker_params = params[:quote][:speaker]
     speaker = Speaker.where(speaker_params).first
-    speaker = Speaker.new(speaker_params) unless speaker
+    speaker = Speaker.create(speaker_params) unless speaker
 
     quote_params.delete :speaker
+
+    quote_params[:date_of_quote] = Date.strptime quote_params[:date_of_quote], '%m-%d-%Y'
+    ap quote_params[:date_of_quote]
 
     quote = Quote.new quote_params
     quote.user = current_user
     quote.speaker = speaker
+
+    ap quote
 
     if quote.save
       redirect_to root_path
@@ -48,6 +53,7 @@ class QuotesController < ApplicationController
   def new
     @quote = Quote.new
     @quote.speaker = Speaker.new
+    @quote.date_of_quote = DateTime.now.to_date
   end
 
   def destroy

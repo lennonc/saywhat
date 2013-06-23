@@ -18,7 +18,7 @@
             <%= field.label :name, "Who?"%>
           </td>
           <td>
-            <%= field.text_field :name %>
+            <%= field.text_field :name, :autocomplete => 'off' %>
           </td>
         <% end %>
       </tr>
@@ -35,7 +35,7 @@
           <%= f.label :date_of_quote, "When?"%>
         </td>
         <td>
-          <%= f.date_select(:date_of_quote, :start_year => 2010)%>
+          <%= f.text_field :date_of_quote, :value => @quote.date_of_quote.strftime('%m-%d-%Y'), :class => 'datepicker' %>
         </td>
       </tr>
       <tr>
@@ -50,11 +50,14 @@
       $(function() {
         var availableTags = <%=Speaker.all(:select => :name).map{ |speaker| speaker[:name] }.to_json.html_safe %>;
 
-        $( "#quote_speaker_name" ).autocomplete({
-          source: availableTags,
-          delay : 100,
-          autoFocus : true
+        $('#quote_speaker_name').typeahead({
+          source: availableTags
         });
+
+        $('.datepicker').datepicker({
+          format: 'mm-dd-yyyy'
+        });
+
       });
     </script>
     

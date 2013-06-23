@@ -29,7 +29,7 @@
         </div>
 
         <div class="quote-info">
-          <img class="quote-speaker-photo" src="/assets/kyle.jpg" width="100" height="100" alt="<%= quote.speaker.name %>" />
+          <%= image_tag quote.speaker.photo_url, :width => '100', :height => '100', :class => 'quote-speaker-photo', :alt => quote.speaker.name %>
           <%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %><br/>
           <%= quote.date_of_quote.to_formatted_s(:long) %>
         </div>
