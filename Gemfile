@@ -6,7 +6,6 @@ gem 'rails', '3.2.13'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'awesome_print'
 end
 
 group :development do
@@ -49,6 +48,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 gem 'koala'
+gem 'awesome_print'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
