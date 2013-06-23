@@ -31,7 +31,7 @@
         <div class="quote-info">
           <%= speaker_image quote.speaker %>
           <%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %><br/>
-          <%= quote.date_of_quote.to_formatted_s(:long) %>
+          <%= quote.date_of_quote.strftime('%B %d, %Y') %>
         </div>
       </div>
     <%end%>

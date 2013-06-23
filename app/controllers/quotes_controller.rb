@@ -22,6 +22,8 @@ class QuotesController < ApplicationController
 
     @quotes = Quote.paginate(:page => params[:page]) unless @quotes
 
+    @quotes = @quotes.order('date_of_quote DESC')
+
   end
 
   def create
@@ -59,6 +61,5 @@ class QuotesController < ApplicationController
   def destroy
     
   end
-
-
+  
 end
