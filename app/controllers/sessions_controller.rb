@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     # user = User.authenticate(params[:email], params[:password])
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_url
+    redirect_to root_url, :notice => "Logged in as #{user.name}"
 
     # if user
     #   session[:user] = user

@@ -16,55 +16,6 @@
 </head>
 
 <body>
-
-<!-- <div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", log_out_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
-
-  <div class="container">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <ul class="nav">
-          <li>
-            <%= link_to "See All Quotes", quotes_path%>
-          </li>
-          <div style="display:inline-block" class="pull-right">
-
-            <% if current_user%>
-              <%= link_to "+ New Quote", new_quote_path,
-                          :class => "left-btn btn btn-success "%>
-              <%= link_to "Log out", log_out_path,
-                          :class => "btn btn-danger"%>
-            <%else%>
-              <%= link_to "Sign in with facebook", '/auth/facebook',
-                          :class => "left-btn btn btn-success" %>
-
-            <%end%>
-          </div>
-        </ul>
-      </div>
-    </div>
-    <%if flash.count != 0 %>
-    <div class="alert alert-block">
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :span, msg, :id => "flash#{name}" %>
-      <% end %>
-    </div>
-    <%end%>
-
-    <div class="content">
-
-    </div>
-  </div> -->
-
-  <!--  -->
-
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -81,9 +32,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
+
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= link_to "+ New Quote", new_quote_path %></li>
+          <%end%>
           <li class="dropdown">
             <% if current_user %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <strong><%= current_user.name %></strong>! <b class="caret"></b></a>
@@ -99,13 +54,26 @@
                 <li><a href="#">Sign up with email</a></li>
               </ul>
             <%end%>
-
           </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
+
   <div class="container">
+
+    <%if flash.count != 0 %>
+      <div class="alert alert-block">
+        <% flash.each do |name, msg| %>
+          <%if name == :notice %>
+          <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%=msg%>
+          </div>
+          <%end%>
+        <% end %>
+      </div>
+    <%end%>
     <%= yield %>
   </div>
 </body>

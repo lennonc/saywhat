@@ -13,11 +13,10 @@
 <% else %>
 
   <div class="pagination-top">
-    Quotes per page: <div class="btn-group">
+    Quotes per page: <div class="btn-group btn-group-md">
       <% quotes_per_page_list.each do |num| %>
-        <%= link_to num.to_s, quotes_per_page_link(num), :class => "btn" + (@per_page.to_i == num ? ' btn-inverse' : '') %>
+        <%= link_to num.to_s, quotes_per_page_link(num), :class => "btn btn-default" + (@per_page.to_i == num ? ' active' : '') %>
       <% end %>
-      
     </div>
   </div>
 
@@ -43,7 +42,7 @@
 
 <script type="text/javascript">
   $(function() {
-    $('.quote-info').popover({
+    $('.quote-info').tooltip({
       html: true,
       trigger: 'hover'
     });
