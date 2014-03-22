@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
   def logged_in?
     current_user != nil
-  end 
+  end
 
   def authorize
     unless logged_in?
@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    session[:user]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 end

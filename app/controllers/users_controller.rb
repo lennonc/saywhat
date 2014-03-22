@@ -8,9 +8,13 @@ class UsersController < ApplicationController
     if @user.save
 
       redirect_to root_url, :notice => "Signed up!"
-      session[:user] = @user
+      session[:user_id] = @user.id
     else
       render "new"
     end
+  end
+
+  def edit
+
   end
 end

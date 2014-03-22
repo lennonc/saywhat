@@ -23,7 +23,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'twitter-bootstrap-rails', '2.2.6'
+  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
   gem 'bootstrap-datepicker-rails'
   # gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
 
@@ -49,6 +49,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 gem 'koala'
 gem 'awesome_print'
+gem 'omniauth-facebook', '1.4.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
