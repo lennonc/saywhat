@@ -47,9 +47,10 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
-gem 'koala'
 gem 'awesome_print'
 gem 'omniauth-facebook', '1.4.0'
+gem 'koala', '~> 1.8.0rc1'
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

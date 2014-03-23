@@ -34,15 +34,15 @@ class QuotesController < ApplicationController
     speaker = Speaker.create(speaker_params) unless speaker
 
     quote_params.delete :speaker
-
-    quote_params[:date_of_quote] = Date.strptime quote_params[:date_of_quote], '%m-%d-%Y'
-    ap quote_params[:date_of_quote]
+    date_year = quote_params['date_of_quote(1i)']
+    date_month = quote_params['date_of_quote(2i)']
+    date_day = quote_params['date_of_quote(3i)']
+    quote_params[:date_of_quote] = Date.strptime "#{date_month}-#{date_day}-#{date_year}", '%m-%d-%Y'
 
     quote = Quote.new quote_params
     quote.user = current_user
     quote.speaker = speaker
 
-    ap quote
 
     if quote.save
       redirect_to root_path
@@ -59,7 +59,7 @@ class QuotesController < ApplicationController
   end
 
   def destroy
-    
+
   end
-  
+
 end

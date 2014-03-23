@@ -11,41 +11,53 @@
   <% end %>
 
   <%= form_for @quote do |f| %>
-    <table>
-      <tr>
+    <div class="row">
+      <div class='form-group'>
         <%= f.fields_for @quote.speaker do |field| %>
-          <td class="labels">
+          <div class="col-md-2">
             <%= field.label :name, "Who?"%>
-          </td>
-          <td>
-            <%= field.text_field :name, :autocomplete => 'off' %>
-          </td>
-        <% end %>
-      </tr>
-      <tr>
-        <td class="labels">
-          <%= f.label :quote, "Said what?"%>
-        </td>
-        <td>
-          <%= f.text_area :quote, :class => "quote-text-area"%>
-        </td>
-      </tr>
-      <tr>
-        <td class="labels">
-          <%= f.label :date_of_quote, "When?"%>
-        </td>
-        <td>
-          <%= f.text_field :date_of_quote, :value => @quote.date_of_quote.strftime('%m-%d-%Y'), :class => 'datepicker' %>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td class="submit-button">
-          <%= f.submit "Save", :class => "btn btn-primary"%>
-        </td>
-      </tr>
-    </table>
-
+          </div>
+          <div class="col-md-3">
+            <%= field.text_field :name, :autocomplete => 'off', :class => 'form-control'%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class='form-group'>
+        <%= f.fields_for @quote.speaker do |field| %>
+          <div class="col-md-2">
+            <%= field.label :quote, "Said What?"%>
+          </div>
+          <div class="col-md-3">
+            <%= f.text_area :quote, :autocomplete => 'off', :class => 'quote-text-area'%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class='form-group'>
+        <%= f.fields_for @quote.speaker do |field| %>
+          <div class="col-md-2">
+            <%= field.label :date_of_quote, "When?"%>
+          </div>
+          <div class="col-md-3">
+            <%= f.date_select :date_of_quote, :value => @quote.date_of_quote.strftime('%m-%d-%Y'), :class => 'form-control'%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class='form-group'>
+          <div class="col-md-2"></div>
+          <div class="col-md-3">
+            <%= f.submit "Save", :class => "btn btn-primary"%>
+          </div>
+      </div>
+    </div>
     <script type="text/javascript">
       $(function() {
         var availableTags = <%=Speaker.all(:select => :name).map{ |speaker| speaker[:name] }.to_json.html_safe %>;
@@ -54,12 +66,8 @@
           source: availableTags
         });
 
-        $('.datepicker').datepicker({
-          format: 'mm-dd-yyyy'
-        });
-
       });
     </script>
-    
+
   <%end%>
 </div>
