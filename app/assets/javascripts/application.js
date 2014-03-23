@@ -13,7 +13,6 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-
 // Close the alert boxes when you click them
 $(function(){
   $(".alert").click(function(){
