@@ -12,6 +12,7 @@
  *= require_tree .
  */
 
+@import "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
 
 .left-btn {
   margin-right: 10px;
@@ -49,6 +50,20 @@
     content: "";
     line-height: 0;
 }
+
+.navbar-login-content
+{
+    width:220px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+.navbar-login-content:before, .navbar-login-content:after
+{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
 .navbar-nav.navbar-right:last-child {
 margin-right: 15px !important;
 }

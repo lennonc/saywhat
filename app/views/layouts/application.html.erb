@@ -7,7 +7,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
 
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/redmond/jquery-ui.css", "application", "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :media => "all" %>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/redmond/jquery-ui.css", "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", "application", :media => "all" %>
 
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js", "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" ,"application"%>
 
@@ -73,9 +73,22 @@
             <%else%>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to image_tag('pressed_404.png'), '/auth/facebook'%></li>
-                <li class="divider"></li>
-                <li><a href="#">Sign up with email</a></li>
+                <li>
+                  <div class="navbar-login-content">
+                      <%= link_to '/auth/facebook', :class => 'btn btn-primary' do %>
+                        <i class="fa fa-facebook fa-fw fa-2"></i>
+                        Sign up with facebook
+                      <% end %>
+                      <br>
+                      <br>
+                      <%= link_to sign_up_path, :class => 'btn btn-primary' do %>
+                        <i class="fa fa-envelope fa-fw fa-2"></i>
+                        Sign up with email
+                      <% end %>
+                      <br>
+                      <br>
+                  </div>
+                </li>
               </ul>
             <%end%>
           </li>
