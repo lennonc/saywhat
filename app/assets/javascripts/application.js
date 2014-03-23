@@ -10,7 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require twitter/bootstrap
 //= require_tree .
 
 // Close the alert boxes when you click them
@@ -21,4 +20,4 @@ $(function(){
 });
 
 $(".alert").alert();
-window.setTimeout(function() { $(".alert").alert('close'); }, 2000);
+window.setTimeout(function() { $(".alert").alert('close'); }, 5000);

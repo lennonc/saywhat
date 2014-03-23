@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
 
   def self.from_omniauth(auth)
-
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -33,13 +32,13 @@ class User < ActiveRecord::Base
   end
 
   def profile_photo
-    graph = Koala::Facebook::API.new(self.oauth_token)
+    graph = get_graph
     image_url = graph.get_picture('me', :width => PHOTO_SIZE, :height => PHOTO_SIZE)
     image_url
   end
 
   def get_additional_info
-    graph = Koala::Facebook::API.new(self.oauth_token)
+    graph = get_graph
     info = graph.get_object('me')
     self.email = info['email']
     self.first_name = info['first_name']
@@ -64,5 +63,11 @@ class User < ActiveRecord::Base
 
   def name
     self.first_name + " " + self.last_name
+  end
+
+  private
+
+  def get_graph
+    graph = Koala::Facebook::API.new(self.oauth_token)
   end
 end
