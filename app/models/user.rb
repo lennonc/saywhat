@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :name
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
+  PHOTO_SIZE = '500'
 
   # creates one to many association with quotes so we can call user.quotes
   # on a user object (add a belongs to association to the quotes)
@@ -12,37 +13,56 @@ class User < ActiveRecord::Base
   # validates_uniqueness_of   :email
   # validates_confirmation_of :password
 
-  # before_save :encrypt_password
+  before_save :get_additional_info
+
 
   def self.from_omniauth(auth)
+
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.name = auth.info.name
+      # user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
   end
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
+  def reconnect_with_facebook()
+
   end
 
-  def encrypt_password
-    if password.present?
-      self.password_salt    = BCrypt::Engine.generate_salt
-      self.password_digest  = BCrypt::Engine.hash_secret(password, password_salt)
-    end
+  def profile_photo
+    graph = Koala::Facebook::API.new(self.oauth_token)
+    image_url = graph.get_picture('me', :width => PHOTO_SIZE, :height => PHOTO_SIZE)
+    image_url
   end
 
-  def full_name
-    first_name + " " + last_name
+  def get_additional_info
+    graph = Koala::Facebook::API.new(self.oauth_token)
+    info = graph.get_object('me')
+    self.email = info['email']
+    self.first_name = info['first_name']
+    self.last_name = info['last_name']
   end
 
+  # def self.authenticate(email, password)
+  #   user = find_by_email(email)
+  #   if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_salt)
+  #     user
+  #   else
+  #     nil
+  #   end
+  # end
+
+  # def encrypt_password
+  #   if password.present?
+  #     self.password_salt    = BCrypt::Engine.generate_salt
+  #     self.password_digest  = BCrypt::Engine.hash_secret(password, password_salt)
+  #   end
+  # end
+
+  def name
+    self.first_name + " " + self.last_name
+  end
 end

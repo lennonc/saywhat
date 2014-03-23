@@ -12,11 +12,7 @@
 //
 //= require twitter/bootstrap
 //= require_tree .
-//= require bootstrap-datepicker
 
-// $(function() {
-//   $("#quote_date_of_quote").datepicker();
-// });
 
 // Close the alert boxes when you click them
 $(function(){
@@ -24,3 +20,6 @@ $(function(){
     $(this).alert('close')
   });
 });
+
+$(".alert").alert();
+window.setTimeout(function() { $(".alert").alert('close'); }, 2000);

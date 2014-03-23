@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140322110235) do
+ActiveRecord::Schema.define(:version => 20140323171636) do
 
   create_table "quotes", :force => true do |t|
     t.integer  "user_id"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20140322110235) do
     t.datetime "updated_at",       :null => false
     t.string   "provider"
     t.string   "uid"
-    t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
   end

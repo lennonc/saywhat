@@ -54,8 +54,6 @@ GEM
       railties (>= 3.0)
     bootstrap-will_paginate (0.0.10)
       will_paginate
-    bootstrap3-datetimepicker-rails (3.0.0)
-      momentjs-rails (~> 2.5.0)
     builder (3.0.4)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -130,8 +128,6 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
-    momentjs-rails (2.5.1)
-      railties (>= 3.1)
     multi_json (1.9.2)
     multipart-post (2.0.0)
     nio4r (1.0.0)
@@ -246,14 +242,12 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-will_paginate
-  bootstrap3-datetimepicker-rails (~> 3.0.0)
   capybara
   coffee-rails (~> 3.2.1)
   factory_girl_rails
   guard-rspec
   koala (~> 1.8.0rc1)
   less-rails
-  momentjs-rails (~> 2.5.0)
   omniauth-facebook (= 1.4.0)
   pg
   rails (= 3.2.13)
