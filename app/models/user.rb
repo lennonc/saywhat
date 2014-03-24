@@ -26,20 +26,22 @@ class User < ActiveRecord::Base
     end
   end
 
-  def profile_photo
-    image_url = self.facebook.get_picture('me', :width => PHOTO_SIZE, :height => PHOTO_SIZE)
-    image_url
-  end
-
   def get_additional_info
     info = self.facebook.get_object('me')
     self.email = info['email']
     self.first_name = info['first_name']
     self.last_name = info['last_name']
+    self.photo = self.facebook.get_picture('me', :width => PHOTO_SIZE, :height => PHOTO_SIZE)
   end
 
   def get_friends
     friends = self.friends.where(:accepted => true).all
+    toReturn = []
+    friends.each do |friend|
+      user = User.find(friend.friend)
+      toReturn << user
+    end
+    toReturn
   end
 
   def make_friends

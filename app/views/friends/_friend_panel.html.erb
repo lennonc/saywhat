@@ -1,0 +1,21 @@
+<% if !friends.blank? %>
+  <% for friend in friends %>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <%= image_tag 'unknown.jpg', width: 50 %>
+          &nbsp;<b><%= friend.name %></b>
+        </div>
+      </div>
+
+      <div class='col-md-6'>
+        <div class='pull-right'>
+          <%= link_to 'See Quotes', speaker_quotes_path(:speaker_id => friend.id), :class => 'btn btn-default'%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  Nothing to see here
+<% end %>
+

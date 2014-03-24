@@ -21,7 +21,7 @@
   </div>
 
   <div class="quotes-container">
-    <%@quotes.each_with_index do |quote,index|%>
+      <%@quotes.each_with_index do |quote,index|%>
       <div class="quote <%= (index % 2) == 0 ? 'left' : 'right' %>">
         <div class="quote-bubble">
           <div class="quote-text">&ldquo;<%= quote.quote %>&rdquo;</div>
@@ -30,10 +30,11 @@
         <div class="quote-info">
           <%= speaker_image quote.speaker %>
           <%= link_to quote.speaker.name, speaker_quotes_path(:speaker_id => quote.speaker.id) %><br/>
-          <%= quote.date_of_quote.strftime('%B %d, %Y') %>
+          <%= distance_of_time_in_words(Time.now, quote.date_of_quote)%> ago
         </div>
       </div>
-    <%end%>
+
+      <%end%>
   </div>
 
   <div class="pagination-container"><%= will_paginate @quotes %></div>

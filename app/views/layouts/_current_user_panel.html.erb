@@ -5,7 +5,7 @@
         <div class="navbar-content">
           <div class="row">
               <div class="col-md-5">
-                <%= image_tag current_user.profile_photo, :class => 'img-responsive'%>
+                <%= image_tag current_user.photo, :class => 'img-responsive'%>
               </div>
               <div class="col-md-7">
                   <span><strong><%= current_user.name %></strong></span>
@@ -22,7 +22,9 @@
       <div class="navbar-footer">
         <div class="navbar-footer-content">
           <div class="row">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <%= link_to "Notifications", log_out_path, :class => 'btn btn-default btn-sm'%>
+            </div>
             <div class="col-md-6">
               <%= link_to "Sign Out", log_out_path, :class => 'btn btn-default btn-sm pull-right'%>
             </div>
@@ -38,7 +40,7 @@
       <div class="navbar-login-content">
           <%= link_to '/auth/facebook', :class => 'btn btn-primary' do %>
             <i class="fa fa-facebook fa-fw fa-2"></i>
-            Sign up with facebook
+            Log in with facebook
           <% end %>
           <br>
           <br>
