@@ -1,0 +1,35 @@
+<a href="" class="dropdown-toggle" data-toggle="dropdown">
+  Requests
+    <% if current_user.get_friend_requests.size != 0 %>
+      <span class="badge"><%= current_user.get_friend_requests.size %></span>
+    <%end%>
+  <b class='caret'></b>
+</a>
+
+<ul class='dropdown-menu'>
+  <div class="navbar-requests">
+    <% if !friend_requests.empty? %>
+      <% for request in friend_requests %>
+        <a href="">
+          <div class="row">
+            <div class='notification'>
+              <div class="col-md-3">
+                <%= image_tag 'unknown.jpg', width: 45, class: "notification-image"%>
+              </div>
+              <div class="col-md-9 notification-text">
+                <%user = User.find(request.friend)%>
+                <%= link_to user.name, speaker_quotes_path(:speaker_id => user.id) %> wants to be friends with you.
+                <div class="time-ago">
+                  <%from_time = Time.now%>
+                  <%= distance_of_time_in_words(from_time, request.created_at)%> ago.
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    <% else %>
+      <li>Nothing to see here</li>
+    <% end %>
+  </div>
+</ul>

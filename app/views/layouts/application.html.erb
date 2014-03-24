@@ -35,62 +35,12 @@
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li><%= link_to "+ New Quote", new_quote_path %></li>
+            <li class='dropdown'>
+              <%= render partial: "layouts/requests", locals: { :friend_requests => friend_requests }%>
+            </li>
           <%end%>
           <li class="dropdown">
-            <% if current_user %>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <strong><%= current_user.first_name %></strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li>
-                    <div class="navbar-content">
-                      <div class="row">
-                          <div class="col-md-5">
-                            <%= image_tag current_user.profile_photo, :class => 'img-responsive'%>
-                          </div>
-                          <div class="col-md-7">
-                              <span><strong><%= current_user.name %></strong></span>
-                              <p class="text-muted small">
-                                <%= current_user.email %>
-                              </p>
-                              <div class="divider">
-                              </div>
-                              <a href="#" class="btn btn-primary btn-sm">View Profile</a>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div class="navbar-footer">
-                    <div class="navbar-footer-content">
-                      <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6">
-                          <%= link_to "Sign Out", log_out_path, :class => 'btn btn-default btn-sm pull-right'%>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            <%else%>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div class="navbar-login-content">
-                      <%= link_to '/auth/facebook', :class => 'btn btn-primary' do %>
-                        <i class="fa fa-facebook fa-fw fa-2"></i>
-                        Sign up with facebook
-                      <% end %>
-                      <br>
-                      <br>
-                      <%= link_to sign_up_path, :class => 'btn btn-primary' do %>
-                        <i class="fa fa-envelope fa-fw fa-2"></i>
-                        Sign up with email
-                      <% end %>
-                      <br>
-                      <br>
-                  </div>
-                </li>
-              </ul>
-            <%end%>
+            <%= render :partial => 'layouts/current_user_panel'%>
           </li>
         </ul>
       </div>

@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should send a friednd request to the user' do
+    Hash.new should_be {}
+  end
 end

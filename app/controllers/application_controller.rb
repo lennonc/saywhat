@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user
+  helper_method :current_user, :friend_requests
 
   protected
   def logged_in?
@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
       flash[:error] = "Unauthorized access"
       redirect_to log_in_path
       false
+    end
+  end
+
+  def friend_requests
+    if current_user
+      @friend_requests = current_user.get_friend_requests
+    else
+      @friend_requests = []
     end
   end
 
