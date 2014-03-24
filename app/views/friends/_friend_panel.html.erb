@@ -10,12 +10,40 @@
 
       <div class='col-md-6'>
         <div class='pull-right'>
-          <%= link_to 'See Quotes', speaker_quotes_path(:speaker_id => friend.id), :class => 'btn btn-default'%>
+          <%= link_to 'Friends', "", :class => 'btn btn-default'%>
         </div>
       </div>
     </div>
   <% end %>
 <% else %>
-  Nothing to see here
+  You have no friends
+<% end %>
+<br>
+Perhaps you may know these people.
+<br>
+<br>
+<% if !users.blank? %>
+  <% for user in users %>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <%if user.photo%>
+            <%= image_tag user.photo, width: 50 %>
+          <%else%>
+            <%= image_tag 'unknown.jpg', width: 50 %>
+          <%end%>
+          &nbsp;<b><%= user.name %></b>
+        </div>
+      </div>
+
+      <div class='col-md-6'>
+        <div class='pull-right'>
+          <%= link_to 'Send Request', "", :class => 'btn btn-default'%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  You have no friends
 <% end %>
 

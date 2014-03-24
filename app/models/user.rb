@@ -44,6 +44,19 @@ class User < ActiveRecord::Base
     toReturn
   end
 
+  def get_other_users
+    users = User.all
+    users.delete(self)
+    self.get_friends.each do |friend|
+      users.delete(friend)
+    end
+    self.get_friend_requests.each do |friend|
+      friend = User.find(friend.friend)
+      users.delete(friend)
+    end
+    users
+  end
+
   def make_friends
 
   end
