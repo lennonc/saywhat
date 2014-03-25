@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_notifications_date
+    current_user.update_notifications_date
+    redirect_to request.env["HTTP_REFERER"]
+  end
+
   def edit
 
   end

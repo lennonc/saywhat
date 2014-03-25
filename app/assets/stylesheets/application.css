@@ -54,17 +54,17 @@
     line-height: 0;
 }
 
-.navbar-requests{
+.navbar-notifications{
   width: 320px;
   padding: 15px;
 }
 
-.navbar-requests a:link{
+.navbar-notifications a:link{
   text-decoration: none;
   color: black;
 }
 
-.navbar-requests:before, .navbar-requests:after
+.navbar-notifications:before, .navbar-notifications:after
 {
     display: table;
     content: "";
@@ -86,8 +86,16 @@
   font-size: 10px;
 }
 
+.mark-as-read:visited{
+  color: blue;
+}
+
+.mark-as-read{
+  color: blue;
+  font-size: 10px;
+}
 .notification{
-  padding-bottom: 50px;
+  padding-bottom: 5px;
   padding-top: 5px;
 }
 

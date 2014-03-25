@@ -3,6 +3,7 @@ SayWhat::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
 
+
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
@@ -12,6 +13,8 @@ SayWhat::Application.routes.draw do
   get "/quotes/user/:user_id" => "quotes#index", :as => :user_quotes
 
   get "/speaker/:speaker_id/photo" => "speakers#photo", :as => :speaker_photo
+
+  get "/notifications/update" => "users#update_notifications_date", :as => :update_notifications
 
   resources :users
   resources :sessions
