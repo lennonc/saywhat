@@ -15,14 +15,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def friend_requests
-    if current_user
-      @friend_requests = current_user.get_friend_requests
-    else
-      @friend_requests = []
-    end
-  end
-
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140324055423) do
-
-  create_table "friends", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "friend"
-    t.boolean  "accepted"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20140325034113) do
 
   create_table "quotes", :force => true do |t|
     t.integer  "user_id"
@@ -43,13 +35,14 @@ ActiveRecord::Schema.define(:version => 20140324055423) do
     t.string   "email"
     t.string   "password_salt"
     t.string   "password_digest"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "photo"
+    t.datetime "time_opened_notification"
   end
 
 end

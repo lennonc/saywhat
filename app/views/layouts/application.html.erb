@@ -32,14 +32,12 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><%= link_to "People", friends_path %></li>
-        </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li><%= link_to "+ New Quote", new_quote_path %></li>
             <li class='dropdown'>
-              <%= render partial: "layouts/requests", locals: { :friend_requests => friend_requests }%>
+              <%= render partial: "layouts/notifications"%>
             </li>
           <%end%>
           <li class="dropdown">

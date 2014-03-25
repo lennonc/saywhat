@@ -18,6 +18,9 @@
   margin-right: 10px;
 }
 
+.center{
+  text-align: center;
+}
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
