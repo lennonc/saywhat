@@ -1,9 +1,44 @@
-<a href="" class="dropdown-toggle" data-toggle="dropdown">
-  Notifications<b class='caret'></b>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  Notifications
+  <% if new_notifications.size != 0 %>
+    <span class="badge"><%= new_notifications.size %></span>
+  <%end%>
+  <b class='caret'></b>
 </a>
 
 <ul class='dropdown-menu'>
-  <div class="navbar-requests">
+  <div class="navbar-notifications">
+    <% if !new_notifications.blank? %>
+      <div class='row'>
+        <div class="col-md-5 ">
+          <a class="mark-as-read" href="/notifications/update">Mark all as read</a>
+        </div>
+        <br>
+      </div>
+      <% for notification in new_notifications %>
+        <li class="divider"></li>
+        <div class="row notification">
+          <div class="col-md-2">
+            <%= image_tag "unknown.jpg", width: 50, class: 'notification-image' %>
+          </div>
+          <div class="col-md-10">
+            <li class="notification-text">
+              <strong><%= Speaker.find(notification.speaker_id).name%></strong> said<br>
+              <%= notification.quote %>
+              <br>
+              <div class="time-ago">
+                <%= distance_of_time_in_words(Time.now, notification.created_at) %> ago.
+              </div>
 
+            </li>
+          </div>
+        </div>
+
+      <% end %>
+    <% else %>
+      <div class="center">
+        You have no new Notifications
+      </div>
+    <% end %>
   </div>
 </ul>

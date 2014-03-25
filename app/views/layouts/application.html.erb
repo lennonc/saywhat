@@ -37,7 +37,7 @@
           <% if current_user %>
             <li><%= link_to "+ New Quote", new_quote_path %></li>
             <li class='dropdown'>
-              <%= render partial: "layouts/notifications"%>
+              <%= render partial: "layouts/notifications", locals: {:new_notifications => user_notifications}%>
             </li>
           <%end%>
           <li class="dropdown">

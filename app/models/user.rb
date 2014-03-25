@@ -26,12 +26,26 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_notifications_date
+    self.time_opened_notification = Time.now
+    self.save!
+  end
+
   def get_additional_info
     info = self.facebook.get_object('me')
     self.email = info['email']
     self.first_name = info['first_name']
     self.last_name = info['last_name']
     self.photo = self.facebook.get_picture('me', :width => PHOTO_SIZE, :height => PHOTO_SIZE)
+  end
+
+  def get_notifications
+    last_opened_notifications = self.time_opened_notification
+    if last_opened_notifications
+      Quote.order('created_at DESC').where('created_at > ?', last_opened_notifications).all
+    else
+      Quote.order("created_at DESC").all
+    end
   end
 
   # def self.authenticate(email, password)

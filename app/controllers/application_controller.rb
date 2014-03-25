@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :friend_requests
+  helper_method :current_user, :user_notifications
 
   protected
   def logged_in?
@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
       redirect_to log_in_path
       false
     end
+  end
+
+  def user_notifications
+    @notifications = current_user.get_notifications
   end
 
   private
